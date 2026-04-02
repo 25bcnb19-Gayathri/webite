@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | JobFinder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            padding: 20px;
+        }
+        .register-card {
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border: 1px solid var(--gray-border);
+        }
+        .register-head {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .register-head h1 {
+            font-size: 1.8rem;
+            margin-top: 15px;
+        }
+        .role-selector {
+            display: flex;
+            background: var(--gray-light);
+            padding: 5px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+        }
+        .role-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            background: transparent;
+            color: var(--text-slate-light);
+        }
+        .role-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .input-wrapper {
+            position: relative;
+        }
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-slate-light);
+        }
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-border);
+            outline: none;
+            font-family: inherit;
+        }
+        .btn-full {
+            width: 100%;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        .msg {
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: none;
+            text-align: center;
+        }
+        .error-msg { color: #ef4444; }
+        .success-msg { color: #10b981; }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .back-link a { color: var(--primary); font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <div class="register-card">
+        <div class="register-head">
+            <div class="logo" style="justify-content: center;">
+                <span class="icon-box"><i class="fas fa-briefcase"></i></span>
+                JobFinder
+            </div>
+            <h1>Join Us Today</h1>
+            <p style="color: var(--text-slate-light); font-size: 0.9rem;">Create your specialized account</p>
+        </div>
+
+        <div class="role-selector">
+            <button class="role-btn active" id="btn-jobseeker">Jobseeker</button>
+            <button class="role-btn" id="btn-admin">Admin</button>
+        </div>
+
+        <form id="register-form">
+            <div class="form-group">
+                <label>Full Name</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="email@example.com" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-primary btn-full">Create Account</button>
+            <p id="reg-msg" class="msg"></p>
+        </form>
+
+        <div class="back-link">
+            Already have an account? <a href="login.html">Sign In</a>
+        </div>
+        <div class="back-link">
+            <a href="index.html" style="color: var(--text-slate-light);"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        const registerForm = document.getElementById('register-form');
+        const roleBtns = document.querySelectorAll('.role-btn');
+        let selectedRole = 'jobseeker';
+
+        roleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                roleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedRole = btn.id === 'btn-admin' ? 'admin' : 'jobseeker';
+            });
+        });
+
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const msgP = document.getElementById('reg-msg');
+
+            try {
+                const response = await fetch('http://localhost:5000/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password, role: selectedRole })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    msgP.textContent = "Account created! Redirecting to login...";
+                    msgP.className = "msg success-msg";
+                    msgP.style.display = 'block';
+                    setTimeout(() => window.location.href = 'login.html', 2000);
+                } else {
+                    msgP.textContent = data.error;
+                    msgP.className = "msg error-msg";
+                    msgP.style.display = 'block';
+                }
+            } catch (err) {
+                msgP.textContent = "Server connection failed.";
+                msgP.className = "msg error-msg";
+                msgP.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

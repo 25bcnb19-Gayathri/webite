@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JobFinder: Discover your next career move with our simple and powerful job search platform.">
+    <title>JobFinder | Your Dream Career Starts Here</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container container-nav">
+            <a href="/" class="logo">
+                <span class="icon-box"><i class="fas fa-briefcase"></i></span>
+                JobFinder
+            </a>
+            <nav class="nav-links">
+                <a href="#hero" class="active">Home</a>
+                <a href="#jobs">Find Jobs</a>
+                <a href="#categories">Categories</a>
+                <a href="login.html" class="btn-login-header" id="auth-nav-link">Login</a>
+                <a href="register.html" class="btn-register-header" id="reg-nav-link">Sign Up</a>
+                <a href="#post-job" class="btn-post">Post a Job</a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="reveal-up">Find Your Next <span class="highlight">Dream Job</span> Today</h1>
+                <p class="reveal-up" style="transition-delay: 0.1s;">Browse through thousands of job opportunities across diverse industries and take your career to the next level.</p>
+                
+                <div class="search-box reveal-up" style="transition-delay: 0.2s;">
+                    <div class="search-input">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="job-search" placeholder="Job title, keywords, or company...">
+                    </div>
+                    <div class="search-input location-input">
+                        <i class="fas fa-location-dot"></i>
+                        <input type="text" placeholder="Location, City, or Remote">
+                    </div>
+                    <button id="search-btn" class="btn-primary">Search Jobs</button>
+                </div>
+                
+                <div class="hero-stats reveal-up" style="transition-delay: 0.3s;">
+                    <div class="stat"><strong>10k+</strong> Jobs Available</div>
+                    <div class="stat"><strong>5k+</strong> Top Companies</div>
+                    <div class="stat"><strong>200k+</strong> Candidates</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Popular Categories</h2>
+            <div class="category-grid" id="category-filters">
+                <button class="cat-chip active" data-category="all">All Jobs</button>
+                <button class="cat-chip" data-category="IT">Information Technology</button>
+                <button class="cat-chip" data-category="Marketing">Marketing</button>
+                <button class="cat-chip" data-category="Finance">Finance</button>
+                <button class="cat-chip" data-category="Design">Design</button>
+                <button class="cat-chip" data-category="Sales">Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section id="jobs" class="job-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest Opportunities</h2>
+                <p id="results-count">Showing all jobs</p>
+            </div>
+            
+            <div class="job-grid" id="job-container">
+                <!-- Javascript will inject jobs here -->
+                <div class="loading-state">Loading job opportunities...</div>
+            </div>
+            
+            <div class="load-more-container">
+                <button id="load-more" class="btn-secondary">Load More Jobs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Job Section (Modal or Inline) -->
+    <section id="post-job" class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <h2>Hire Your Next Star Employee</h2>
+                    <p>Post your job opening today and reach thousands of qualified candidates from all over the world.</p>
+                </div>
+                <button class="btn-light" id="open-post-modal">Post a Job for Free</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <a href="/" class="logo inverse">JobFinder</a>
+                <p>Empowering careers and connecting talent with opportunity since 2026. Join our global community today.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>For Candidates</h4>
+                <ul>
+                    <li><a href="#">Browse Jobs</a></li>
+                    <li><a href="#">Job Alerts</a></li>
+                    <li><a href="#">Career Advice</a></li>
+                    <li><a href="#">Saved Jobs</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>For Employers</h4>
+                <ul>
+                    <li><a href="#">Post a Job</a></li>
+                    <li><a href="#">Talent Search</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 JobFinder. Created with passion for a better workplace.</p>
+        </div>
+    </footer>
+
+    <!-- Apply Modal -->
+    <div id="apply-modal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <span class="close-modal" id="close-apply">&times;</span>
+            <div class="modal-body">
+                <h2 style="margin-bottom: 10px;">Apply for <span id="modal-job-title" style="color: var(--primary);">Job</span></h2>
+                <p id="modal-company-name" style="color: var(--text-slate-light); margin-bottom: 20px;">Company</p>
+                
+                <form id="apply-form">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 500;">Phone Number</label>
+                        <input type="tel" id="app-phone" placeholder="e.g. 9876543210" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 500;">Years of Experience</label>
+                        <input type="number" id="app-exp" min="0" max="50" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 500;">Resume File (PDF/Word)</label>
+                        <input type="file" id="app-resume" accept=".pdf,.doc,.docx" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 12px;">Submit Application</button>
+                </form>
+
+                <div id="apply-success-msg" style="display: none; text-align: center; padding: 20px;">
+                    <div style="font-size: 3rem; color: #10b981; margin-bottom: 10px;"><i class="fas fa-check-circle"></i></div>
+                    <h3>Application Sent!</h3>
+                    <p>The company will review your profile.</p>
+                    <button class="btn-secondary" style="margin-top: 15px;" onclick="location.reload()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorite Indicator (Floating Toast) -->
+    <div id="toast" class="toast">Job saved to favorites!</div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

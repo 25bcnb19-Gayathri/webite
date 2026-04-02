@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "email": "admin@jobfinder.com",
+    "password": "admin",
+    "role": "admin",
+    "name": "Admin User"
+  },
+  {
+    "id": 2,
+    "email": "jobseeker@mail.com",
+    "password": "password",
+    "role": "jobseeker",
+    "name": "John Doe"
+  },
+  {
+    "id": 3,
+    "name": "Jane Manager",
+    "email": "jane@test.com",
+    "password": "pass123",
+    "role": "admin"
+  },
+  {
+    "id": 4,
+    "name": "Bob Hunter",
+    "email": "bob@test.com",
+    "password": "pass123",
+    "role": "jobseeker"
+  },
+  {
+    "id": 5,
+    "name": "akash",
+    "email": "akash@gmail.com",
+    "password": "akash@12",
+    "role": "admin"
+  },
+  {
+    "id": 1775118752029,
+    "name": "alwin",
+    "email": "alwin@gmail.com",
+    "password": "alwin@12",
+    "role": "jobseeker"
+  }
+]
